@@ -13,9 +13,14 @@ export default function Footer() {
 const styles = StyleSheet.create({
   footer: {
     flex: 1,
-    width:107,
-    backgroundColor: 'blue',
     alignItems: 'center',
     justifyContent: 'center',
+    width: 100,
+    height: 70,
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'yellow'
   },
 });

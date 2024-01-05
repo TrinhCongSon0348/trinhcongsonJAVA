@@ -1,11 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 export default function Header() {
+  //Logout
+  const navigation = useNavigation();
+  const onCart = () => {
+    navigation.navigate("CartDetail");
+  }
   return (
     <View style={styles.header}>
       <Text>Header</Text>
-      <StatusBar style="auto" />
+      <TouchableOpacity
+        style={styles.buttonStyle}
+        onPress={onCart}>
+        <Text>Giỏ hàng</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -13,9 +22,21 @@ export default function Header() {
 const styles = StyleSheet.create({
   header: {
     flex: 1,
-    width:107,
-    backgroundColor: 'blue',
     alignItems: 'center',
     justifyContent: 'center',
+    width: 100,
+    height: 70,
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'pink'
+  },
+  buttonStyle: {
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: 10,
+    width: '100%',
+    marginTop: 16,
   },
 });
