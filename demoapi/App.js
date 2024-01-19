@@ -11,7 +11,6 @@ import { StyleSheet, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // import LoginScreem from './component/login';
-// import HomeScreem from './component/home';
 // import RegisterSreem from './component/register';
 import ProductDetail from './component/ProductDetail';
 import Onboarding from './component/Onboarding';
@@ -21,6 +20,7 @@ import Login from './component/LoginScreem';
 import Register from './component/RegisterScreem';
 import Payment from './component/Payment';
 import Cart from './component/Cart';
+import HomeScreem from './component/home';
 
 
 const Stack = createNativeStackNavigator();
@@ -99,7 +99,8 @@ const App = () => {
     // </View>
     <View style={styles.container}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='dangnhap' screenOptions={{headerShown: false}}>
+        <Stack.Navigator initialRouteName='login' screenOptions={{ headerShown: false }}>
+          <Stack.Screen name='Home' component={HomeScreem} />
           <Stack.Screen name='dangnhap' component={Login} />
           <Stack.Screen name='dangky' component={Register} />
           <Stack.Screen name='chitiet' component={DetailItem} />
@@ -108,8 +109,7 @@ const App = () => {
           <Stack.Screen name='giohang' component={Cart} />
           <Stack.Screen name='thanhtoan' component={Payment} />
           {/* <Stack.Screen name='Register' component={RegisterSreem} />
-          <Stack.Screen name='Login' component={LoginScreem} />
-          <Stack.Screen name='Home' component={HomeScreem} /> */}
+          <Stack.Screen name='Login' component={LoginScreem} /> */}
           <Stack.Screen name='Detail' component={ProductDetail} />
         </Stack.Navigator>
       </NavigationContainer>

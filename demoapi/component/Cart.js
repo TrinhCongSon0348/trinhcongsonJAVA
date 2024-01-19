@@ -6,7 +6,7 @@ import { SafeAreaView, View, ScrollView, Image, Text, TouchableOpacity } from "r
 export default function Cart(props) {
 	const navigation = useNavigation();
 	const onBack = () => {
-		navigation.navigate("trangchu")
+		navigation.navigate("Home")
 	}
 	const onCheckout = () => {
 		navigation.navigate("thanhtoan")
@@ -34,11 +34,11 @@ export default function Cart(props) {
 						alignItems: "center",
 						justifyContent: "center",
 						marginTop: 5,
-						backgroundColor: "#33FFCC",
+						backgroundColor: "black",
 						marginBottom: 5,
 						marginLeft: 5
 					}} onPress={onBack}>
-						<Text>Quay lại</Text>
+						<Text style={{color: 'white'}}>Quay lại</Text>
 					</TouchableOpacity>
 				</View>
 				{/* <View 

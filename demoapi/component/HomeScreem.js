@@ -569,7 +569,7 @@ export default function Home(props) {
 							<TouchableOpacity style={styles.loginBtn} onPress={onDetail}>
 								<Text style={styles.loginText} >Chi tiết</Text>
 							</TouchableOpacity>
-							<TouchableOpacity style={styles.addBtn} onPress={onDetail}>
+							<TouchableOpacity style={styles.addBtn} onPress={onCart}>
 								<Text style={styles.addText} >Thêm vào giỏ</Text>
 							</TouchableOpacity>
 						</View>
@@ -586,7 +586,7 @@ export default function Home(props) {
 							<TouchableOpacity style={styles.loginBtn} onPress={onDetail}>
 								<Text style={styles.loginText} >Chi tiết</Text>
 							</TouchableOpacity>
-							<TouchableOpacity style={styles.addBtn} onPress={onDetail}>
+							<TouchableOpacity style={styles.addBtn} onPress={onCart}>
 								<Text style={styles.addText} >Thêm vào giỏ</Text>
 							</TouchableOpacity>
 						</View>
@@ -603,7 +603,7 @@ export default function Home(props) {
 							<TouchableOpacity style={styles.loginBtn} onPress={onDetail}>
 								<Text style={styles.loginText} >Chi tiết</Text>
 							</TouchableOpacity>
-							<TouchableOpacity style={styles.addBtn} onPress={onDetail}>
+							<TouchableOpacity style={styles.addBtn} onPress={onCart}>
 								<Text style={styles.addText} >Thêm vào giỏ</Text>
 							</TouchableOpacity>
 						</View>
@@ -620,7 +620,7 @@ export default function Home(props) {
 							<TouchableOpacity style={styles.loginBtn} onPress={onDetail}>
 								<Text style={styles.loginText} >Chi tiết</Text>
 							</TouchableOpacity>
-							<TouchableOpacity style={styles.addBtn} onPress={onDetail}>
+							<TouchableOpacity style={styles.addBtn} onPress={onCart}>
 								<Text style={styles.addText} >Thêm vào giỏ</Text>
 							</TouchableOpacity>
 						</View>
@@ -637,7 +637,7 @@ export default function Home(props) {
 							<TouchableOpacity style={styles.loginBtn} onPress={onDetail}>
 								<Text style={styles.loginText} >Chi tiết</Text>
 							</TouchableOpacity>
-							<TouchableOpacity style={styles.addBtn} onPress={onDetail}>
+							<TouchableOpacity style={styles.addBtn} onPress={onCart}>
 								<Text style={styles.addText} >Thêm vào giỏ</Text>
 							</TouchableOpacity>
 						</View>
@@ -654,7 +654,7 @@ export default function Home(props) {
 							<TouchableOpacity style={styles.loginBtn} onPress={onDetail}>
 								<Text style={styles.loginText} >Chi tiết</Text>
 							</TouchableOpacity>
-							<TouchableOpacity style={styles.addBtn} onPress={onDetail}>
+							<TouchableOpacity style={styles.addBtn} onPress={onCart}>
 								<Text style={styles.addText} >Thêm vào giỏ</Text>
 							</TouchableOpacity>
 						</View>
@@ -671,7 +671,7 @@ export default function Home(props) {
 							<TouchableOpacity style={styles.loginBtn} onPress={onDetail}>
 								<Text style={styles.loginText} >Chi tiết</Text>
 							</TouchableOpacity>
-							<TouchableOpacity style={styles.addBtn} onPress={onDetail}>
+							<TouchableOpacity style={styles.addBtn} onPress={onCart}>
 								<Text style={styles.addText} >Thêm vào giỏ</Text>
 							</TouchableOpacity>
 						</View>
@@ -710,11 +710,11 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 	},
 	dess: {
-		backgroundColor: '#33CC33',
+		backgroundColor: 'black',
 		paddingVertical: 8
 	},
 	dess_text: {
-		color: 'black',
+		color: 'white',
 		textAlign: 'center',
 		fontWeight: 'bold'
 	},
@@ -736,8 +736,8 @@ const styles = StyleSheet.create({
 		height: 50,
 		alignItems: "center",
 		justifyContent: "center",
-		backgroundColor: "#FFFF33",
 		marginTop: 10,
+		borderWidth:1
 	},
 	ha: {
 		flexDirection: 'row',
@@ -749,8 +749,8 @@ const styles = StyleSheet.create({
 		height: 50,
 		alignItems: "center",
 		justifyContent: "center",
-		backgroundColor: "#3366FF",
 		marginTop: 10,
+		borderWidth:1
 	},
 	loginText:{
 		color: 'black',

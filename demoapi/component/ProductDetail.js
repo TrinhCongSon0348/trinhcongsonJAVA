@@ -4,63 +4,60 @@ import { useState } from 'react';
 
 const ProductDetail = () => {
     //Call API
-    // const [data, setData] = useState(null);
+    const [data, setData] = useState(null);
 
-    // const getDataUsingSimpleGetCall = () => {
-    //     axios
-    //         .get('https://fakestoreapi.com/products')
-    //         .then(function (response) {
-    //             // handle success
-    //             setData(response.data);
-    //         })
-    //         .catch(function (error) {
-    //             // handle error
-    //             alert(error.message);
-    //         })
-    //         .finally(function () {
-    //             // always executed
-    //             console.log('Finally called');
-    //         });
+    const getDataUsingSimpleGetCall = (id) => {
+        axios
+            .get('https://fakestoreapi.com/products/'+id)
+            .then(function (response) {
+                // handle success
+                setData(response.data);
+            })
+            .catch(function (error) {
+                // handle error
+                alert(error.message);
+            })
+            .finally(function () {
+                // always executed
+                console.log('Finally called');
+            });
 
-    // };
+    };
 
-    // const renderItem = ({ item }) => {
-    //     return (
-    //         <View
-    //             style={{
-    //                 padding: 10,
-    //                 width: '70%',
-    //                 height: 500,
-    //                 justifyContent: 'center',
-    //                 marginVertical: 8,
-    //                 marginHorizontal: 16,
-    //                 backgroundColor: 'blue',
-    //             }}>
-    //             <Image
-    //                 style={{
-    //                     width: '100%',
-    //                     height: 400,
-    //                     justifyContent: 'center',
-    //                     flexDirection: 'column',
-    //                     resizeMode: 'contain',
-    //                 }}
-    //                 source={{
-    //                     uri:
-    //                         'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-    //                 }}
-    //             />
+    const renderItem = ({ item }) => {
+        return (
+            <View
+                style={{
+                    padding: 10,
+                    width: '70%',
+                    height: 500,
+                    justifyContent: 'center',
+                    marginVertical: 8,
+                    marginHorizontal: 16,
+                    backgroundColor: 'white',
+                }}>
+                <Image
+                    style={{
+                        width: '100%',
+                        height: 400,
+                        justifyContent: 'center',
+                        flexDirection: 'column',
+                        resizeMode: 'contain',
+                    }}
+                    source={{ uri: `${item.image}` }}
+                />
 
-    //             <Text style={{ fontSize: 13, fontStyle: 'italic', justifyContent: 'center' }}>{item.id}</Text>
-    //             <Text style={{ fontSize: 13, fontStyle: 'italic', justifyContent: 'center' }}>{item.title}</Text>
-    //             <Text style={{ fontSize: 13, fontStyle: 'italic', justifyContent: 'center' }}>{item.price}</Text>
-    //             <Text style={{ fontSize: 13, fontStyle: 'italic', justifyContent: 'center' }}>{item.description}</Text>
-    //         </View>
-    //     );
-    //}
+                <Text style={{ fontSize: 13, fontStyle: 'italic', justifyContent: 'center' }}>{item.id}</Text>
+                <Text style={{ fontSize: 13, fontStyle: 'italic', justifyContent: 'center' }}>{item.title}</Text>
+                <Text style={{ fontSize: 13, fontStyle: 'italic', justifyContent: 'center' }}>{item.price}</Text>
+                <Text style={{ fontSize: 13, fontStyle: 'italic', justifyContent: 'center' }}>{item.description}</Text>
+            </View>
+        );
+    }
     return (
         <View style={styles.container}>
             <Text>Chi tiết sản phẩm</Text>
-            {/* <TouchableOpacity
+            <TouchableOpacity
                 style={styles.buttonStyle}
                 onPress={getDataUsingSimpleGetCall}>
                 <Text>Simple Get Call</Text>
@@ -72,7 +69,7 @@ const ProductDetail = () => {
                     renderItem={renderItem}
                     keyExtractor={item => item.id}
                 />
-            </SafeAreaView> */}
+            </SafeAreaView>
         </View>
     );
 }

@@ -39,7 +39,7 @@ export default function Header() {
       }}>
       <View style={{ flexDirection: 'row' }}>
         <Image
-          source={{ uri: "https://banner2.cleanpng.com/20180710/hev/kisspng-fast-food-junk-food-cuisine-logo-brand-5b45397f22d258.9777016815312633591426.jpg" }}
+          source={{ uri: "https://baabrand.com/wp-content/uploads/2018/12/icon-thiet-ke-linh-vuc-logo-thuong-hieu-thoi-trang-my-pham-lam-dep-spa-baa-brand-1.png" }}
           resizeMode={"stretch"}
           style={{
             width: 50,
@@ -51,7 +51,7 @@ export default function Header() {
         />
         <View style={{ flexDirection: 'column' }}>
           <TouchableOpacity onPress={onLogin}>
-            <View style={{ borderRadius: 10, width: 100, height: 20, backgroundColor: 'black', marginTop:10, marginLeft:90}}>
+            <View style={{ borderRadius: 10, width: 100, height: 20, backgroundColor: 'black', marginTop: 10, marginLeft: 90 }}>
               <Text style={{ color: 'white', textAlign: 'center' }}>Login/Logout</Text>
             </View>
           </TouchableOpacity>

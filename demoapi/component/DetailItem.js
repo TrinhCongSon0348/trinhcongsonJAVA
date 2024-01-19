@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 export default function DetailItem(props) {
 	const navigation = useNavigation();
 	const onBack = () => {
-		navigation.navigate("trangchu")
+		navigation.navigate("Home")
 	}
 	const onPay = () => {
 		navigation.navigate("thanhtoan")
@@ -31,11 +31,11 @@ export default function DetailItem(props) {
 						alignItems: "center",
 						justifyContent: "center",
 						marginTop: 5,
-						backgroundColor: "#33FFCC",
+						backgroundColor: "black",
 						marginBottom: 5,
 						marginLeft: 5
 					}} onPress={onBack}>
-						<Text>Quay lại</Text>
+						<Text style={{color: 'white'}}>Quay lại</Text>
 					</TouchableOpacity>
 				</View>
 				<View
@@ -80,7 +80,7 @@ export default function DetailItem(props) {
 					/> */}
 				</View>
 				<Image
-					source={{ uri: "https://dominofilm.vn/uploads/albums/2019/01/photo_5c495cf04fcea.jpg" }}
+					source={{ uri: "http://www.elle.vn/wp-content/uploads/2017/09/15/Th%E1%BB%8Bt-x%C3%B4ng-kh%C3%B3i-Montreal.jpg" }}
 					resizeMode={"stretch"}
 					style={{
 						borderRadius: 16,
@@ -328,13 +328,13 @@ export default function DetailItem(props) {
 							style={{
 								width: 217,
 								alignItems: "center",
-								backgroundColor: "#c67c4e",
+								backgroundColor: "black",
 								borderRadius: 16,
 								paddingVertical: 24,
 							}}>
 							<Text
 								style={{
-									color: "#ffffff",
+									color: "white",
 									fontSize: 16,
 									fontWeight: "bold",
 								}}

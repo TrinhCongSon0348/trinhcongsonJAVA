@@ -12,7 +12,7 @@ export default function Login(props) {
 		navigation.navigate("dangky");
 	}
 	const onLogin = () => {
-		navigation.navigate("trangchu");
+		navigation.navigate("Home");
 	}
 
 	return (
