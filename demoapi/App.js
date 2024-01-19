@@ -10,15 +10,23 @@ import { StyleSheet, View } from 'react-native';
 // import { SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import LoginScreem from './component/login';
-import HomeScreem from './component/home';
+// import LoginScreem from './component/login';
+// import HomeScreem from './component/home';
+// import RegisterSreem from './component/register';
 import ProductDetail from './component/ProductDetail';
+import Onboarding from './component/Onboarding';
+import Home from './component/HomeScreem';
+import DetailItem from './component/DetailItem';
+import Login from './component/LoginScreem';
+import Register from './component/RegisterScreem';
+import Payment from './component/Payment';
 import Cart from './component/Cart';
 
-const Stack=createNativeStackNavigator();
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
-  
+
   // const [data, setData] = useState(null);
 
   // const getDataUsingSimpleGetCall = () => {
@@ -91,11 +99,18 @@ const App = () => {
     // </View>
     <View style={styles.container}>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator initialRouteName='dangnhap' screenOptions={{headerShown: false}}>
+          <Stack.Screen name='dangnhap' component={Login} />
+          <Stack.Screen name='dangky' component={Register} />
+          <Stack.Screen name='chitiet' component={DetailItem} />
+          <Stack.Screen name='trangchu' component={Home} />
+          <Stack.Screen name='main' component={Onboarding} />
+          <Stack.Screen name='giohang' component={Cart} />
+          <Stack.Screen name='thanhtoan' component={Payment} />
+          {/* <Stack.Screen name='Register' component={RegisterSreem} />
           <Stack.Screen name='Login' component={LoginScreem} />
-          <Stack.Screen name='Home' component={HomeScreem} />
+          <Stack.Screen name='Home' component={HomeScreem} /> */}
           <Stack.Screen name='Detail' component={ProductDetail} />
-          <Stack.Screen name='Cart' component={Cart} />
         </Stack.Navigator>
       </NavigationContainer>
     </View>
@@ -110,7 +125,7 @@ const styles = StyleSheet.create({
   },
   buttonStyle: {
     alignItems: 'center',
-    backgroundColor: '#DDDDDD',
+    backgroundColor: 'white',
     padding: 10,
     width: '100%',
     marginTop: 16,

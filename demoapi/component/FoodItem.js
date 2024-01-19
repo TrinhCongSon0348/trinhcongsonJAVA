@@ -13,7 +13,7 @@
 // import Icon from 'react-native-vector-icons/FontAwesome5'
 
 // function _getColorFromStatus(status) {
-//     /*w
+//     /*
 //     if(status.toLowerCase().trim() == 'opening now') {
 //         return colors.success
 //     } else if(status.toLowerCase().trim() == 'closing soon') {
