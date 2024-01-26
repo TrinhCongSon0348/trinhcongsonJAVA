@@ -1,22 +1,89 @@
 import React from "react";
-import { SafeAreaView, View, ScrollView, ImageBackground, Image, Text, TextInput } from "react-native";
+import { SafeAreaView, View, ScrollView, ImageBackground, Image, Text, TextInput, Alert, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
+import axios from 'axios';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function Register(props) {
+export default function Register() {
 	const navigation = useNavigation();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const [npassword, setNPassword] = useState('');
-	const [name, setName] = useState('');
+	// const [checkEmail, setCheckEmail] = useState(true);
+	// const [errorPass, setErrorPass] = useState('');
 
 	const onLogin = () => {
 		navigation.navigate("dangnhap");
 	}
+
+
+
+	// let regexEmail = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+
+	// if (!regexEmail.test(formData.email)) {
+	// 	setCheckEmail(false);
+	// }
+	// else {
+	// 	setCheckEmail(true);
+	// }
+	// formData.password === '' ? setErrorPass('Mat khau rong') : setCheckEmail('')
+
+
+
 	const onRegister = () => {
-		navigation.navigate("dangnhap");
+		let formData = {
+			email: email,
+			password: password,
+		}
+		axios.post('https://65ae567f1dfbae409a7497b3.mockapi.io/register', formData)
+			.then((respone) => {
+				if (respone.data) {
+					alert(`Bạn đã đăng ký thành công với Email: ${respone.data.email}. Đăng nhập ngay thôi`);
+					navigation.navigate("dangnhap");
+				}
+			})
+			.catch((err) => console.log(err))
 	}
 
+
+
+
+	// const validateEmail = (email) => {
+	// 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	// 	return emailRegex.test(email);
+	// };
+
+	// const onRegister = async () => {
+	// 	try {
+	// 		if (!validateEmail(email)) {
+	// 			alert('Lỗi', 'Vui lòng nhập địa chỉ email hợp lệ.');
+	// 			return;
+	// 		}
+
+	// 		const response = await axios.post('https://65ae567f1dfbae409a7497b3.mockapi.io/register', {
+	// 			email: email,
+	// 			password: password,
+	// 		});
+
+	// 		if (response.data.success) {
+	// 			// Lưu thông tin người dùng vào AsyncStorage hoặc Redux Store (tuỳ thuộc vào cách quản lý trạng thái)
+	// 			// await AsyncStorage.setItem('email', JSON.stringify(response.data.email));
+
+	// 			alert('Đăng ký thành công', 'Bạn đã đăng ký thành công!');
+	// 			navigation.navigate("dangnhap");
+	// 		} else {
+	// 			alert('Lỗi đăng ký', response.data.message);
+	// 		}
+	// 	} catch (error) {
+	// 		// Xử lý lỗi, chẳng hạn hiển thị thông báo lỗi
+	// 		alert('Lỗi đăng ký', 'Đã có lỗi xảy ra khi đăng ký. Vui lòng thử lại sau.');
+	// 		console.error('Lỗi khi đăng ký', error);
+	// 	}
+	// };
+
+
+
+	
 	return (
 		<SafeAreaView
 			style={{
@@ -58,7 +125,7 @@ export default function Register(props) {
 							paddingHorizontal: 24,
 							marginLeft: 15,
 						}}>
-						<Text
+						{/* <Text
 							style={{
 								color: "#ffffff",
 								fontSize: 18,
@@ -80,7 +147,7 @@ export default function Register(props) {
 								placeholderTextColor="#ffffff"
 								onChangeText={(name) => setName(name)}
 							/>
-						</View>
+						</View> */}
 						<Text
 							style={{
 								color: "#ffffff",
@@ -103,6 +170,7 @@ export default function Register(props) {
 								placeholderTextColor="#ffffff"
 								onChangeText={(email) => setEmail(email)}
 							/>
+							{/* <Text style={{ color: 'red' }}>{!checkEmail ? 'Sai dinh dang email' : ''}</Text> */}
 						</View>
 						<Text
 							style={{
@@ -126,8 +194,10 @@ export default function Register(props) {
 								placeholderTextColor="#ffffff"
 								onChangeText={(password) => setPassword(password)}
 							/>
+							{/* <Text style={{ color: 'red' }}>{errorPass}</Text> */}
 						</View>
-						<Text
+						
+						{/* <Text
 							style={{
 								color: "#ffffff",
 								fontSize: 18,
@@ -149,7 +219,7 @@ export default function Register(props) {
 								placeholderTextColor="#ffffff"
 								onChangeText={(npassword) => setNPassword(npassword)}
 							/>
-						</View>
+						</View> */}
 						<View
 							style={{
 								alignItems: "center",
@@ -178,7 +248,7 @@ export default function Register(props) {
 									fontSize: 16,
 									fontWeight: "bold",
 								}}
-								onPress={onLogin}>
+								onPress={(onLogin)}>
 								Have already an account? {"Login here"}
 							</Text>
 						</View>
@@ -195,3 +265,6 @@ export default function Register(props) {
 
 	)
 }
+
+
+

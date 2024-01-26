@@ -1,116 +1,46 @@
-// React Native Axios – To Make HTTP API call in React Native
-// https://aboutreact.com/react-native-axios/
-
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-// import React in our code.
-// import { StyleSheet, View, TouchableOpacity, Text, FlatList, Image } from 'react-native';
-//import all the components we are going to use.
-// import axios from 'axios';
-// import { SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// import LoginScreem from './component/login';
-// import RegisterSreem from './component/register';
-import ProductDetail from './component/ProductDetail';
-import Onboarding from './component/Onboarding';
-import Home from './component/HomeScreem';
-import DetailItem from './component/DetailItem';
 import Login from './component/LoginScreem';
 import Register from './component/RegisterScreem';
 import Payment from './component/Payment';
-import Cart from './component/Cart';
 import HomeScreem from './component/home';
-
+import ProductDetailScreen from './component/ProductDetail';
+import CartScreen from './component/Cart';
+import ListCategory from './component/ListCategory';
+import ProductFilter from './component/ProductFilter';
+import Rating from './component/Rating';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
+  //danh muc
+  // const [currentCategory, setCurrentCategory] = useState('electronics'); // Set default category
 
-  // const [data, setData] = useState(null);
-
-  // const getDataUsingSimpleGetCall = () => {
-  //   axios
-  //     .get('https://fakestoreapi.com/products')
-  //     .then(function (response) {
-  //       // handle success
-  //       setData(response.data);
-  //     })
-  //     .catch(function (error) {
-  //       // handle error
-  //       alert(error.message);
-  //     })
-  //     .finally(function () {
-  //       // always executed
-  //       console.log('Finally called');
-  //     });
-
+  // const changeCategory = (newCategory) => {
+  //   setCurrentCategory(newCategory);
   // };
-
-  // const renderItem = ({ item }) => {
-  //   return (
-  //     <View
-  //       style={{
-  //         padding: 10,
-  //         width: 500,
-  //         height: 700,
-  //         marginVertical: 8,
-  //         marginHorizontal: 16,
-  //         backgroundColor: 'pink',
-  //       }}>
-  //       <Image
-  //         style={{
-  //           width: 400,
-  //           height: 600,
-  //           resizeMode: 'contain',
-  //         }}
-  //         source={{
-  //           uri:
-  //             'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-  //         }}
-  //       />
-
-  //       <Text style={{ fontSize: 18, fontStyle: 'italic' }}>{item.id}</Text>
-  //       <Text style={{ fontSize: 18, fontStyle: 'italic' }}>{item.title}</Text>
-  //       <Text style={{ fontSize: 18, fontStyle: 'italic' }}>{item.price}</Text>
-  //     </View>
-  //   );
-  // }
-
   return (
-    // <View style={styles.container}>
-    //   <Text style={{ fontSize: 30, textAlign: 'center' }}>
-    //     Example of Axios Networking in React Native
-    //   </Text>
-    //   {/*Running GET Request*/}
-    //   <TouchableOpacity
-    //     style={styles.buttonStyle}
-    //     onPress={getDataUsingSimpleGetCall}>
-    //     <Text>Simple Get Call</Text>
-    //   </TouchableOpacity>
-    //   <SafeAreaView
-    //     style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    //     <FlatList
-    //       data={data}
-    //       renderItem={renderItem}
-    //       keyExtractor={item => item.id}
-    //     />
-    //   </SafeAreaView>
-    // </View>
+
     <View style={styles.container}>
+      {/* <View>
+        <Button title="Electronics" onPress={() => changeCategory('electronics')} />
+        <Button title="Clothing" onPress={() => changeCategory('clothing')} />
+        <ListCategory category={currentCategory} />
+      </View> */}
+      
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='login' screenOptions={{ headerShown: false }}>
-          <Stack.Screen name='Home' component={HomeScreem} />
+        <Stack.Navigator initialRouteName='trangchu' screenOptions={{ headerShown: false }}>
+          <Stack.Screen name='trangchu' component={HomeScreem} />
+          <Stack.Screen name='chitiet' component={ProductDetailScreen} />
           <Stack.Screen name='dangnhap' component={Login} />
           <Stack.Screen name='dangky' component={Register} />
-          <Stack.Screen name='chitiet' component={DetailItem} />
-          <Stack.Screen name='trangchu' component={Home} />
-          <Stack.Screen name='main' component={Onboarding} />
-          <Stack.Screen name='giohang' component={Cart} />
+          <Stack.Screen name="giohang" component={CartScreen} />
           <Stack.Screen name='thanhtoan' component={Payment} />
-          {/* <Stack.Screen name='Register' component={RegisterSreem} />
-          <Stack.Screen name='Login' component={LoginScreem} /> */}
-          <Stack.Screen name='Detail' component={ProductDetail} />
+          <Stack.Screen name='danhmuc' component={ListCategory} />
+          <Stack.Screen name='loc' component={ProductFilter} />
+          <Stack.Screen name='danhgia' component={Rating} />
         </Stack.Navigator>
       </NavigationContainer>
     </View>
@@ -133,4 +63,3 @@ const styles = StyleSheet.create({
 });
 
 export default App;
-
