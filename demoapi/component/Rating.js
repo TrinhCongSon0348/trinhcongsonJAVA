@@ -40,9 +40,9 @@ const Rating = () => {
   const renderItem = ({ item }) => (
     <View style={{ padding: 10, marginVertical: 8, marginHorizontal: 16, backgroundColor: 'white' }}>
       <Image style={{ width: 100, height: 100 }} source={{ uri: item.image }} />
-      <Text style={{fontWeight:'bold'}}>{item.title}</Text>
-      <Text style={{fontWeight:'bold'}}>{item.price}</Text>
-      <Text style={{fontWeight:'bold', color:'red'}}>Rating: {item.rating.rate} ({item.rating.count} reviews)</Text>
+      <Text style={{ fontWeight: 'bold' }}>{item.title}</Text>
+      <Text style={{ fontWeight: 'bold' }}>{item.price}</Text>
+      <Text style={{ fontWeight: 'bold', color: 'red' }}>Rating: {item.rating.rate} ({item.rating.count} reviews)</Text>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
         <TouchableOpacity style={styles.detailBtn} onPress={() => navigation.navigate('chitiet', { productId: item.id })}>
           <Text style={styles.loginText} >Detail</Text>
@@ -57,17 +57,17 @@ const Rating = () => {
 
   return (
     <View>
-      <Header/>
+      <Header />
       <TouchableOpacity style={styles.filBtn} onPress={onBack}>
         <Text style={{ color: 'white' }} >Quay lại</Text>
       </TouchableOpacity>
-      <Text style={{ color: 'blue', fontWeight: 'bold', fontSize: 30, alignContent:'center'}}>Danh sách sản phẩm theo đánh giá</Text>
+      <Text style={{ color: 'blue', fontWeight: 'bold', fontSize: 30, alignContent: 'center' }}>Sắp xếp sản phẩm theo đánh giá</Text>
       <FlatList
         data={products}
         keyExtractor={(item) => item.id.toString()}
         renderItem={renderItem}
       />
-      <Footer/>
+      <Footer />
     </View>
   );
 };

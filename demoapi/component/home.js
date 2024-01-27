@@ -196,11 +196,43 @@ import { StyleSheet, View, Text, FlatList, TouchableOpacity, SafeAreaView, Scrol
 import axios from 'axios';  // Nếu sử dụng Axios
 import Header from './header';
 import Footer from './footer';
-import Rating from './Rating';
 
 const Home = ({ navigation }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [sortBy, setSortBy] = useState('asc');
+
+  //Sap xep theo ten san pham
+  const sortProductsAlphabetically = (products, sortOrder) => {
+    const sortedProducts = [...products];
+    sortedProducts.sort((a, b) => {
+      const nameA = a.title.toUpperCase();
+      const nameB = b.title.toUpperCase();
+      return sortOrder === 'asc' ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA);
+    });
+    return sortedProducts;
+  };
+
+  const fetchProductsData = async () => {
+    try {
+      const productsData = await fetchProducts();
+      // Sắp xếp danh sách sản phẩm khi lấy được dữ liệu
+      const sortedProducts = sortProductsAlphabetically(productsData, sortBy);
+      setProducts(sortedProducts);
+    } catch (error) {
+      console.error('Error fetching products data:', error);
+    }
+  };
+
+  const toggleSortOrder = () => {
+    // Chuyển đổi giữa 'asc' và 'desc' khi người dùng nhấn vào nút sắp xếp
+    const newSortOrder = sortBy === 'asc' ? 'desc' : 'asc';
+    setSortBy(newSortOrder);
+    // Sắp xếp lại danh sách sản phẩm
+    const sortedProducts = sortProductsAlphabetically(products, newSortOrder);
+    setProducts(sortedProducts);
+  };
+
   //Chi tiet
   const onDetail = (id) => {
     // Chuyển hướng tới màn hình chi tiết sản phẩm và truyền productId
@@ -212,10 +244,15 @@ const Home = ({ navigation }) => {
     navigation.navigate("giohang");
   }
 
-  
+
   //danhgia
   const onRate = () => {
     navigation.navigate("danhgia");
+  }
+
+  // Sap xep
+  const onSort = () => {
+    navigation.navigate("sapxep");
   }
 
   //Danh muc
@@ -281,7 +318,6 @@ const Home = ({ navigation }) => {
       <Header />
       <SafeAreaView>
         <ScrollView>
-
           <Text style={{ color: 'blue', fontWeight: 'bold', fontSize: 20 }}>Danh mục sản phẩm</Text>
           {/* Button danh muc */}
           <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -313,11 +349,22 @@ const Home = ({ navigation }) => {
             onPress={() => handleFilterByPrice(50, 100)}
           /> */}
 
-          {/* Danh gia */}
-          <TouchableOpacity style={styles.filBtn} onPress={onRate}>
-            <Text style={{color:'white'}}>Đánh giá sản phẩm</Text>
-          </TouchableOpacity>
-
+          <Text style={{ color: 'blue', fontSize: 20, fontWeight: 'bold' }}>Sắp xếp</Text>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            {/* Danh gia */}
+            <TouchableOpacity style={styles.filBtn} onPress={onRate}>
+              <Text style={{ color: 'white' }}>Đánh giá</Text>
+            </TouchableOpacity>
+            {/* Sap xep */}
+            <TouchableOpacity style={styles.filBtn} onPress={onSort}>
+              <Text style={{ color: 'white' }}>Giá bán</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={{marginLeft:230}}>
+            <TouchableOpacity onPress={toggleSortOrder}>
+              <Text style={{fontWeight:'bold'}}>Sắp xếp theo chữ cái {sortBy === 'asc' ? 'A-Z' : 'Z-A'}</Text>
+            </TouchableOpacity>
+          </View>
           <FlatList
             data={products}
             keyExtractor={(item) => item.id.toString()}
@@ -327,7 +374,7 @@ const Home = ({ navigation }) => {
                 <ScrollView>
                   <TouchableOpacity
                     onPress={() => navigation.navigate('chitiet', { productId: item.id })}>
-                       <Text style={{color:'white'}}>Đánh giá sản phẩm</Text>
+                    <Text style={{ color: 'white' }}>Đánh giá sản phẩm</Text>
                     <View>
                       <Image
                         style={{
@@ -339,9 +386,9 @@ const Home = ({ navigation }) => {
                         }}
                         source={{ uri: `${item.image}` }}
                       />
-                      <Text style={{ fontWeight: 'bold'}}>{item.title}</Text>
+                      <Text style={{ fontWeight: 'bold' }}>{item.title}</Text>
                       <Text style={{ fontWeight: 'bold' }}>{item.price} $</Text>
-                      <Text style={{ fontWeight: 'bold' , color:'red'}}>Rating: {item.rating.rate} ({item.rating.count} reviews)</Text>
+                      <Text style={{ fontWeight: 'bold', color: 'red' }}>Rating: {item.rating.rate} ({item.rating.count} reviews)</Text>
                       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <TouchableOpacity style={styles.detailBtn} onPress={() => navigation.navigate('chitiet', { productId: item.id })}>
                           <Text style={styles.loginText} >Detail</Text>
@@ -356,6 +403,7 @@ const Home = ({ navigation }) => {
               </SafeAreaView>
             )}
           />
+
         </ScrollView>
       </SafeAreaView>
       <Footer />
@@ -391,7 +439,7 @@ const styles = StyleSheet.create({
   filBtn: {
     width: '24%',
     borderRadius: 10,
-    height: 40,
+    height: 50,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 10,

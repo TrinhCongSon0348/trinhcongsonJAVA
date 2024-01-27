@@ -3,16 +3,24 @@ import { View, Text, SafeAreaView, ScrollView, Image, StyleSheet, TouchableOpaci
 import axios from 'axios';
 import Header from './header';
 import Footer from './footer';
-import { addToCartAPI } from './CartContext';
-
+import { useCart } from './CartContext';
+// import { addToCartAPI } from './CartContext';
 
 const ProductDetailScreen = ({ route, productId }) => {
   const [product, setProduct] = useState(null);
+  const { addToCart } = useCart();
 
-  //cart
-  const onCart = () => {
-    addToCartAPI(productId);
+  // //cart
+  // const onCart = () => {
+  //   addToCartAPI(productId);
+  // };
+
+
+  //giohang
+  const handleAddToCart = () => {
+    addToCart(product);
   };
+
 
   //quay lai
   const onBack = () => {
@@ -60,7 +68,7 @@ const ProductDetailScreen = ({ route, productId }) => {
               <Text>{product.title}</Text>
               <Text>{product.price}</Text>
               <Text>{product.description}</Text>
-              <TouchableOpacity style={styles.addBtn} onPress={onCart}>
+              <TouchableOpacity style={styles.addBtn} onPress={handleAddToCart}>
                 <Text style={styles.loginText} >Add</Text>
               </TouchableOpacity>
             </View>
